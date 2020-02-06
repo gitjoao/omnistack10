@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const axios = require('axios')
+const DevController = require('./controller/DevController')
 
 const routes = Router()
 
@@ -12,14 +12,8 @@ const routes = Router()
 
 //MongoDB (não relacional)
 
-routes.post('/devs', async (request, response) => {
-    const { user_github } = request.body 
-
-    const result = await axios.get(`https://api.github.com/users/${user_github}`)
-    const { id,name } = result.data
-    console.log( id, name )
-    return response.json({message: "Leu porque é gay."})
-})
+routes.post('/devs', DevController.store)
+routes.get('/devs', DevController.index)
 
 
 module.exports = routes
