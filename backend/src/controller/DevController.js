@@ -38,7 +38,7 @@ module.exports = {
                 location
             })
         }
-
+        console.log(dev)
     return response.json(dev)
     }
 }
